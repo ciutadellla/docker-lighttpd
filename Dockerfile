@@ -7,10 +7,19 @@ FROM alpine:3.18.4
 
 ARG LIGHTTPD_VERSION=1.4.71-r0
 
+#RUN set -x \
+#    && apk add --no-cache \
+#    lighttpd${LIGHTTPD_VERSION:+=}${LIGHTTPD_VERSION} \
+#    lighttpd-mod_auth${LIGHTTPD_VERSION:+=}${LIGHTTPD_VERSION} \
+#   && rm -rvf /var/cache/apk/* \
+#    && rm -rvf /etc/lighttpd/* /etc/logrotate.d/lighttpd /var/log/lighttpd /var/www/localhost \
+#    && mkdir -vp /var/www/html
+
+
 RUN set -x \
     && apk add --no-cache \
-    lighttpd${LIGHTTPD_VERSION:+=}${LIGHTTPD_VERSION} \
-    lighttpd-mod_auth${LIGHTTPD_VERSION:+=}${LIGHTTPD_VERSION} \
+    lighttpd=1.4.71-r0 \
+    lighttpd-mod_auth=1.4.71-r0 \
     && rm -rvf /var/cache/apk/* \
     && rm -rvf /etc/lighttpd/* /etc/logrotate.d/lighttpd /var/log/lighttpd /var/www/localhost \
     && mkdir -vp /var/www/html
